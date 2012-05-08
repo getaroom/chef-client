@@ -7,11 +7,13 @@ version           "1.1.5"
 depends           "bluepill"
 depends           "daemontools"
 depends           "runit"
+depends           "logrotate"
 recipe            "chef-client", "Includes the service recipe by default."
 recipe            "chef-client::config", "Configures the client.rb from a template."
 recipe            "chef-client::service", "Sets up a client daemon to run periodically"
 recipe            "chef-client::delete_validation", "Deletes validation.pem after client registers"
 recipe            "chef-client::cron", "Runs chef-client as a cron job rather than as a service"
+recipe            "chef-client::logrotate", "Sets up log rotation based on log_dir and log_file attributes"
 
 %w{ ubuntu debian redhat centos fedora freebsd openbsd mac_os_x mac_os_x_server windows }.each do |os|
   supports os

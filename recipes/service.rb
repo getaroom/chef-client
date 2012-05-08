@@ -87,7 +87,7 @@ when "smf"
     mode "0777"
     notifies :restart, "service[chef-client]"
   end
-  
+
   template (local_path + "chef-client.xml") do
     source "solaris/manifest.xml.erb"
     owner "root"
@@ -95,13 +95,13 @@ when "smf"
     mode "0644"
     notifies :run, "execute[load chef-client manifest]", :immediately
   end
-  
+
   execute "load chef-client manifest" do
     action :nothing
     command "svccfg import #{local_path}chef-client.xml"
     notifies :restart, "service[chef-client]"
   end
-  
+
   service "chef-client" do
     action [:enable, :start]
     provider Chef::Provider::Service::Solaris
