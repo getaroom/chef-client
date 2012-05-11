@@ -28,11 +28,3 @@ logrotate_app "chef-client" do
   rotate 14
   create "644 rabbitmq rabbitmq"
 end
-
-#logrotate_app "tomcat-myapp" do
-  #cookbook "logrotate"
-  #path "/var/log/tomcat/myapp.log"
-  #frequency "daily"
-  #rotate 30
-  #create "644 root adm"
-#end
